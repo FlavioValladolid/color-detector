@@ -5,20 +5,26 @@ def detector(path):
     img = Image.open(path)
     px = img.load()
     width, height = img.size
+    pixel_color = ()
     colors = []
+    colors_2 = []
     for x in range(width):
         for y in range(height):
             if px[x,y] not in colors:
-                print(px[x,y])
-                colors.append(px[x,y])
-    return colors
+                print(round(x/width*100,2),'%')
+                pixel_color = px[x,y]
+                colors.append(pixel_color)
+                colors_2.append(f'rgb{pixel_color}')
+    
+    return colors, colors_2
 
 
 
-colors_list = detector(r"C:\Users\Flavio\Pictures\logo.png")
+colors_list, colors_list_rgb = detector(r"C:\Users\Flavio\Desktop\a.jpg")
 
-colors_list_2 = []
-for row in colors_list:
-    colors_list_2.append(f'rgb{row}')
+print(colors_list)
 
-print(colors_list_2)
+with open('file.txt','w') as f:
+    for color in colors_list_rgb:
+        f.write(color)
+        f.write('\n')
