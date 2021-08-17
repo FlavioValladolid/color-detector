@@ -14,11 +14,9 @@ def detector(path):
                 print(round(x/width*100,2),'%')
                 pixel_color = px[x,y]
                 colors.append(pixel_color)
-                colors_2.append(f'rgb{pixel_color}')
+                colors_2.append(f'{pixel_color}')
     
     return colors, colors_2
-
-
 
 colors_list, colors_list_rgb = detector(r"C:\Users\Flavio\Desktop\a.jpg")
 
